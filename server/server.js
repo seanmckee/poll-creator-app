@@ -4,10 +4,13 @@ const bodyParser = require("body-parser");
 const MongoClient = require("mongodb").MongoClient
 
 
+
 MongoClient.connect("mongodb+srv://abi:Iamcool12@cluster0.gh0usib.mongodb.net/?retryWrites=true&w=majority")
   .then((client) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
+    app.set("view engine", "ejs");
+    app.use(express.static("public"));
 
     console.log('connected to db')
     const db = client.db('pollsDB')
@@ -17,8 +20,14 @@ MongoClient.connect("mongodb+srv://abi:Iamcool12@cluster0.gh0usib.mongodb.net/?r
     app.listen(3000, () => console.log("listening on port 3000"));
 
     app.get('/', (req, res) => {
-      res.sendFile(__dirname + "/index.html");
+      polls.find().toArray()
+        .then(results =>{
+          //console.log(results)
+          res.render('index.ejs', {pollsArray: results})
+        })
+        .catch(err => console.error(err))
     })
+
     app.post('/addpoll', (req, res) =>{
       req.body.count1 = 0;
       req.body.count2 = 0;

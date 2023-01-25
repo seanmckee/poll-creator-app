@@ -1,0 +1,19 @@
+#container{
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#container section{
+    margin:2rem;
+}
+
+h1{
+    text-align: center;
+}
+
+#form{
+    text-align: center;
+}

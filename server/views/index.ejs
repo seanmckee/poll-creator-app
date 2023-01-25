@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Poll Creator</h1>
+    <div id = 'form'>
+        <form action="/addpoll" method='POST'>
+            <input type="text" placeholder="question" name="question">
+            <input type="text" placeholder="option1" name="option1">
+            <input type="text" placeholder="option2" name="option2">
+            <button type="submit">Create Poll</button>
+        </form>
+    </div>
+    <div id = 'container'>
+        <%for(let i = 0; i < pollsArray.length;i++){%>
+            <section>
+                <span><%= pollsArray[i].question%> <br></span>
+                <span><%= pollsArray[i].option1%></span>
+                <span><%= pollsArray[i].count1%> <br></span>
+                <span><%= pollsArray[i].option2%></span>
+                <span><%= pollsArray[i].count2%></span>
+            </section>
+            <% } %>
+        </div>
+        
+        <script type="text/javascript" src="js/test.js"></script>
+</body>
+
+</html>
