@@ -19,19 +19,23 @@
             <button type="submit">Create Poll</button>
         </form>
     </div>
+    <button id = 'delete'>Delete All</button>
     <div id = 'container'>
         <%for(let i = 0; i < pollsArray.length;i++){%>
             <section>
-                <span><%= pollsArray[i].question%> <br></span>
+                <span><%= pollsArray[i].question%></span><br>
                 <span><%= pollsArray[i].option1%></span>
-                <span><%= pollsArray[i].count1%> <br></span>
+                <span><%= pollsArray[i].count1%></span>
+                <button class = 'update1'>vote</button>
+                <br>
                 <span><%= pollsArray[i].option2%></span>
                 <span><%= pollsArray[i].count2%></span>
+                <button class ='update2'>vote</button>
             </section>
             <% } %>
         </div>
         
-        <script type="text/javascript" src="js/test.js"></script>
+        <script src='js/main.js'></script>
 </body>
 
 </html>

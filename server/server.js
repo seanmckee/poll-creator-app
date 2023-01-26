@@ -31,16 +31,54 @@ MongoClient.connect("mongodb+srv://abi:Iamcool12@cluster0.gh0usib.mongodb.net/?r
     app.post('/addpoll', (req, res) =>{
       req.body.count1 = 0;
       req.body.count2 = 0;
-      console.log(req.body);
-      let numPolls
-      polls.count().then((count) => numPolls = count)
-      req.body.id=numPolls+1
+      polls.count().then((count) => {
+        req.body.id = count
+      })
       polls.insertOne(req.body)
         .then((result) => {
           res.redirect("/");
         })
         .catch((err) => console.error(err));
     })
+
+    app.put('/update1', (req, res) => {
+      polls.updateOne({ question: req.body.ques, option1: req.body.oopt, count1: req.body.ocount, option2: req.body.topt, count2: req.body.tcount }, {
+        $inc: 
+          {count1: 1}
+      }, {
+        upsert: false
+      })
+        .then(result => {
+          console.log('added 1 vote for option 1')
+          res.json('Vote Counted')
+        })
+        .catch(err => console.error(err))
+    })
+
+    app.put('/update2', (req, res) => {
+      polls.updateOne({ question: req.body.ques, option1: req.body.oopt, count1: req.body.ocount, option2: req.body.topt, count2: req.body.tcount }, {
+        $inc: 
+          {count2: 1}
+      }, {
+        upsert: false
+      })
+        .then(result => {
+          console.log('added 1 vote for option 2')
+          res.json('Vote Counted')
+        })
+        .catch(err => console.error(err))
+    })
+
+     app.delete('/delete', (req, res) => {
+      polls.deleteMany({})
+        .then(result => {
+          console.log('deleted')
+          res.json('deleted')
+        })
+        .catch(err => console.error(err))
+    })
+
   })
+
   .catch((err) => console.error(err));
 

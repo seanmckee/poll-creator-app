@@ -17,3 +17,8 @@ h1{
 #form{
     text-align: center;
 }
+
+#delete{
+    display:block;
+    margin: 1% auto;
+}
