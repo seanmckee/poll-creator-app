@@ -7,7 +7,7 @@ require("dotenv").config();
 let dbConnectionStr = process.env.DB_STRING
 
 
-MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true })
+MongoClient.connect('mongodb+srv://abi:Iamcool12@cluster0.gh0usib.mongodb.net/?retryWrites=true&w=majority')
   .then((client) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
