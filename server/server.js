@@ -42,7 +42,7 @@ MongoClient.connect("mongodb+srv://abi:Iamcool12@cluster0.gh0usib.mongodb.net/?r
     })
 
     app.put('/update1', (req, res) => {
-      polls.updateOne({ question: req.body.ques, option1: req.body.oopt, count1: req.body.ocount, option2: req.body.topt, count2: req.body.tcount }, {
+      polls.updateOne( req.body , {
         $inc: 
           {count1: 1}
       }, {
@@ -56,7 +56,7 @@ MongoClient.connect("mongodb+srv://abi:Iamcool12@cluster0.gh0usib.mongodb.net/?r
     })
 
     app.put('/update2', (req, res) => {
-      polls.updateOne({ question: req.body.ques, option1: req.body.oopt, count1: req.body.ocount, option2: req.body.topt, count2: req.body.tcount }, {
+      polls.updateOne( req.body , {
         $inc: 
           {count2: 1}
       }, {

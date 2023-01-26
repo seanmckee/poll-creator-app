@@ -23,11 +23,11 @@ async function update1(){
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                'ques': questionS,
-                'oopt': option1S,
-                'ocount': count1S,
-                'topt': option2S,
-                'tcount': count2S
+                'question': questionS,
+                'option1': option1S,
+                'count1': count1S,
+                'option2': option2S,
+                'count2': count2S
             })
         })
         const data = await response.json
@@ -51,11 +51,11 @@ async function update1(){
             method: 'put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
-                'ques': questionS,
-                '1opt': option1S,
-                '1count': count1S,
-                '2opt': option2S,
-                '2count': count2S
+                'question': questionS,
+                'option1': option1S,
+                'count1': count1S,
+                'option2': option2S,
+                'count2': count2S
             })
         })
         const data = await response.json
