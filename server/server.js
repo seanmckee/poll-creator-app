@@ -1,13 +1,12 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
-const MongoClient = require("mongodb").MongoClient
+const MongoClient = require("mongodb").MongoClient;
 require("dotenv").config();
 
-let dbConnectionStr = process.env.DB_STRING
+let dbConnectionStr = process.env.DB_STRING;
 
-
-MongoClient.connect('mongodb+srv://abi:Iamcool12@cluster0.gh0usib.mongodb.net/?retryWrites=true&w=majority')
+MongoClient.connect(dbConnectionStr, {useUnifiedTopology:true})
   .then((client) => {
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,7 +17,7 @@ MongoClient.connect('mongodb+srv://abi:Iamcool12@cluster0.gh0usib.mongodb.net/?r
     const db = client.db("pollsDB");
     const polls = db.collection("polls");
 
-    app.listen(3000, () => console.log("listening on port 3000"));
+    app.listen(4000, () => console.log("listening on port 4000"));
 
     app.get("/", (req, res) => {
       polls
@@ -93,4 +92,3 @@ MongoClient.connect('mongodb+srv://abi:Iamcool12@cluster0.gh0usib.mongodb.net/?r
   })
 
   .catch((err) => console.error(err));
-
